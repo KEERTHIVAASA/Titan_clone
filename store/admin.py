@@ -7,5 +7,6 @@ class ProductAdmin(admin.ModelAdmin):
         'slug': ('product_name',)
     }
     
+    
 
 admin.site.register(Product,ProductAdmin)
