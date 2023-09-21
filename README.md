@@ -1,3 +1,3 @@
 # Titan_clone
 
-This is an Titan clone ecommerce website developed with django as the backend technology
+This is an Titan clone ecommerce website developed with python-django as the backend technology
