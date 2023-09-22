@@ -1,5 +1,6 @@
 from django.db import models
 from store.models import Product
+from accounts.models import Accounts
 
 class Cart(models.Model):
     cart_id=models.CharField(max_length=250,blank=True)
@@ -10,8 +11,9 @@ class Cart(models.Model):
     
 
 class Cart_item(models.Model):
+    user=models.ForeignKey(Accounts,on_delete=models.CASCADE,null=True)
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
-    cart=models.ForeignKey(Cart,on_delete=models.CASCADE)
+    cart=models.ForeignKey(Cart,on_delete=models.CASCADE,null=True)
     quantity=models.IntegerField()
     is_active=models.BooleanField(default=True)
     
