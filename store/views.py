@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import Product
+from .models import Product,Product_gallery
 from category.models import Category
 from carts.models import Cart_item
 from carts.views import _cart_id
@@ -40,9 +40,12 @@ def product_detail(request,category_slug,product_slug):
         
     except Exception as e:
         raise e
+    
+    product_gallery= Product_gallery.objects.filter(product_id=single_product.id)
     context={
         'single_product' : single_product,
-        'in_cart' : in_cart
+        'in_cart' : in_cart,
+        'product_gallery' : product_gallery,
         
     }
         

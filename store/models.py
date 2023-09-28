@@ -19,3 +19,15 @@ class Product(models.Model):
     
     def get_url(self):
         return reverse('product_detail',args=[self.category.slug,self.slug])
+    
+class Product_gallery(models.Model):
+    product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
+    image=models.ImageField(upload_to='store/products',max_length=255)
+    
+    class Meta:
+        verbose_name='Product_gallery'
+        verbose_name_plural='Product gallery'
+    
+    def __str__(self):
+        return self.product.product_name
+    
