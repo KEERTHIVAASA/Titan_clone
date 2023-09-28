@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import ModelForm
 from .models import Review_rating
 
 class ReviewForm(forms.ModelForm):
-    model=Review_rating
-    fields=['subjects','review','rating']
+    class Meta:
+        model=Review_rating
+        fields=['subject','review','rating']

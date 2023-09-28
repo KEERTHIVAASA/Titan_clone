@@ -1,43 +1,69 @@
 
-.rate > input{
-    display: none;
-}
-
-.rate{
-    display: inline-block;;
-    border: 0;
-
-}
-
-.rate > label{
-    float: right;
-
-}
-
-/* showing the stars */
-.rate > label:before{
-    display: inline-block;
-    font-size: 1.1rem;
-    font-family: FontAwesome;
-    content: "\f005"; 
+.rate {
+    border: none;
+    float: left;
+  }
+  
+.rate {
     margin: 0;
-    padding: 0.3rem .2rem;
-    cursor: pointer;
-}
-
-/* Half star */
-
-.rate .half:before{
+    padding: 0;
+  }
+  
+.rate input {
+    display: none;
+  }
+  
+.rate label:before {
+    margin: 5px;
+    font-size: 1.25em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+  }
+  
+.rate .half:before {
     content: "\f089";
     position: absolute;
-    padding-right: 0;
+  }
+  
+.rate label {
+    color: #ddd;
+    float: right;
+  }
+  
+.rate input:checked~label,
+  
+  /* show gold star when clicked */
+  
+.rate:not(:checked) label:hover,
+  
+  /* hover current star */
+  
+.rate:not(:checked) label:hover~label {
+    color: #FFD700;
+  }
+  
+  
+  /* hover previous stars in list */
+  
+.rate input:checked+label:hover,
+  
+  /* hover current star when changing rating */
+  
+.rate input:checked~label:hover,
+.rate label:hover~input:checked~label,
+
+.rating-star i{
+    color: #ffb503 !important;
 }
-
-/* click and hover */
-
-input  :checked ~ label,label:hover ~ label{
+  
+  /* lighten current selection */
+  
+.rate input:checked~label:hover~label {
     color: #ffb503;
 }
+
+
 
 
 
