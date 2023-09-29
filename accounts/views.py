@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from carts.views import _cart_id
 from carts.models import Cart
 from carts.models import Cart_item
+from orders.models import Order
 import requests
 
 
@@ -124,6 +125,11 @@ def activate(request,uidb64,token):
     
 @login_required(login_url='login')
 def dashboard(request):
-    return render(request,'accounts/dashboard.html')
+    orders=Order.objects.order_by('-created_at').filter(user_id=request.user.id,is_ordered=True)
+    orders_count=orders.count()
+    context={
+        'orders_count':orders_count,
+    }
+    return render(request,'accounts/dashboard.html',context)
         
    
